@@ -18,6 +18,7 @@ class AlienInvasion:
         self.bullets = pygame.sprite.Group()
         self.aliens = pygame.sprite.Group()
         self._create_fleet()
+        self.game_active = False 
 
     def run_game(self):
         # watch for keybords and mouse events 
