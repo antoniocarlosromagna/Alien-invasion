@@ -119,6 +119,11 @@ class AlienInvasion:
             self._create_fleet()
             self.settings.increase_speed()
 
+        if collisions:
+            for aliens in collisions.values():
+                self.stats.score += self.settings.alien_points * len(aliens)
+            self.sb.prep_score()
+                
     def _ship_hit(self):
         # respond to the ship being hit by an alien 
         if self.stats.ships_left > 0: 
@@ -184,6 +189,7 @@ class AlienInvasion:
         if button_clicked and not self.stats.game_active:
             self.stats.reset_stats() # reset the game statistics 
             self.stats.game_active = True 
+            self.sb.prep_score()
 
             # get rid of any remaning aliens and bullets
             self.aliens.empty()
