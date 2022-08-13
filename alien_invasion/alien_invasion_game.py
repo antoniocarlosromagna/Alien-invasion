@@ -115,6 +115,7 @@ class AlienInvasion:
             # destroy existing bullets and create new fleet 
             self.bullets.empty()
             self._create_fleet()
+            self.settings.increase_speed()
 
     def _ship_hit(self):
         # respond to the ship being hit by an alien 
@@ -192,6 +193,9 @@ class AlienInvasion:
 
             # hide the mouse cursor
             pygame.mouse.set_visible(False)
+
+            # reset the game settings
+            self.settings.initialize_dynamic_settings()
 
     def _check_keyup_events(self, event): 
         # respond to key releases 
