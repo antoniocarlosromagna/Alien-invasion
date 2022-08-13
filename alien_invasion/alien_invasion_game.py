@@ -7,6 +7,7 @@ from bullet import Bullet
 from alien import Alien
 from game_stats import GameStats
 from button import Button  
+from scoreboard import Scoreboard 
 
 class AlienInvasion:
     def __init__(self):
@@ -14,7 +15,8 @@ class AlienInvasion:
         self.settings = Settings() 
         self.screen = pygame.display.set_mode((self.settings.x_px, self.settings.y_px)) # screen resolution 
         pygame.display.set_caption('Alien invasion') # window name 
-        self.stats = GameStats(self) # create an instance to store game statistics 
+        self.stats = GameStats(self) # create an instance to store game statistics
+        self.sb = Scoreboard(self) # crate a score board 
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
         self.aliens = pygame.sprite.Group()
@@ -223,8 +225,12 @@ class AlienInvasion:
         # to draw all fired bullets on the screen 
         for bullet in self.bullets.sprites(): 
             bullet.draw_bullet()
-        
-        pygame.display.flip() # make the most recently drawn screen visable
+
+        # draw the score information 
+        self.sb.show_score()
+
+        # make the most recently drawn screen visable
+        pygame.display.flip() 
 
 if __name__ == '__main__':
     # make a game instance, and run the game 
