@@ -9,7 +9,7 @@ class Settings:
         self.x_px = 1280
         self.y_px = 720
         self.bg_color = (23, 24, 39)
-        self.img = pygame.image.load('images_ai/back.bmp')
+        self.img = pygame.image.load('Alien-invasion/alien_invasion/images_ai/back.bmp')
 
         # ship settings 
         self.ship_speed = 1.3
